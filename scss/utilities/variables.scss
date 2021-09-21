@@ -1,0 +1,102 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:math";
+
+
+
+
+//===================================================================
+//  Colores
+//===================================================================
+
+$white: #fff;
+
+//  Tono Marrón  //
+
+$brown: rgba(113, 83, 67, 1);
+$brown-07: color.adjust($brown, $alpha: -0.3);
+$brown-05: color.adjust($brown, $alpha: -0.5);
+
+$dark-brown: rgba(43, 0, 0, .5); 
+
+$light-brown: rgba(247, 231, 148, 1);
+
+// Tono azul  //
+
+$light-blue: rgba(15, 159, 214, 1);
+$light-blue-07: color.adjust($light-blue, $alpha: -0.3);
+$light-blue-05: color.adjust($light-blue, $alpha: -0.5);
+$light-blue-02: color.adjust($light-blue, $alpha: -0.8);
+
+$bondi-blue: rgba(0, 135, 187, 1);
+
+$dodger-blue: rgba(0, 185, 255, 1);
+
+$blue-gradient: rgba(82, 201, 221, 1);
+
+//  Tono naranja  //
+
+$orange: rgba(237, 125, 59, 1);
+$orange-02: color.adjust($orange, $alpha: -0.8);
+$orange-05: color.adjust($orange, $alpha: -0.5);
+
+$blaze-orange: rgba(255, 95, 0, 1);
+
+$orange-gradient: rgba(255, 160, 123, 1);
+
+//===================================================================
+//  Cierre de Colores
+//===================================================================
+
+
+
+//===================================================================
+//  Box Shadows
+//===================================================================
+
+$box-shadow-1: 5px 5px 10px #00000035;
+$box-shadow-2: 5px 5px 10px #00000020;
+$box-shadow-3: 3px 3px 10px #00000020;
+
+//===================================================================
+//  Cierre de Box Shadows
+//===================================================================
+
+
+
+//===================================================================
+//  Size Nutricional
+//===================================================================
+
+//  El valor '10' proviene de la medida buscada en los distintos tipos de propiedades
+//  ('margins', 'paddigns') para cuando los elementos en cuestión tengan un 'font-size' de
+//  26px (o 2.6rem). Por ejemplo, si quiero que un 'button' tenga un 'margin' de 10px al
+//  momento en que su 'font-size' está en 2.6rem, esta variable le ofrece el resultado
+//  buscado ya que lo que arroja es la medida en 'em', es decir, esos 10px dependientes
+//  del 'font-size'.
+
+//  Igualmente esta variable es declarada para ser usada en una función ('utilities/functions')
+//  que la manipula de manera de poder dar varios resultados solo introduciendo un valor
+//  perteneciente al 'font-size' del contexto en el cual se encuentra. Siguiendo esta lógica,
+//  tenga el 'font-size' que tenga en determinada situación, sus medidas en 'em' siempre van a
+//  ser proporcionales a esa relación de 10px/26px.
+
+$size-nutricional: math.div(10, 26) * 1em;
+
+//===================================================================
+//  Cierre Size Nutricional
+//===================================================================
+
+
+
+//===================================================================
+//  Interletter
+//===================================================================
+
+//  Valor de 'letter-spacing' utilizado en múltiples ocasiones.
+
+$interletter: 0.03em;
+
+//===================================================================
+//  Cierre Interletter
+//===================================================================

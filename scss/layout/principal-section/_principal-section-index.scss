@@ -1,0 +1,273 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                         PRINCIPAL SECTION INDEX                           //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                             ESTRUCTURA HTML
+//
+//  <section c= "principal-section">
+//      <article c="principal-section__article">
+//        <div>
+//          <div>
+//            <picture c="principal-section__picture">
+//              <source>
+//              <img c="principal-section__image">
+//            </picture>
+//            <div c="principal-section__description">
+//              <h2 c="principal-section__title"></h2>
+//              <p c="principal-section__parrafo"></p>
+//              <a c="principal-section__button">
+//            </div>
+//          </div>
+//        </div>
+//      </article>
+//  </section>
+//
+//
+//   Visualizar el documento HTML para poder conocer las
+//   clases de Bootstrap que trabajan en conjunto con las 
+//   declaradas en esta hoja de estilo.
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.principal-section__article {
+//  Mixin que genera los 'background' de los tres tipos de 'articles'
+//  que existen en el documento. (Ver estructura en 'utilities/mixins')
+  @include mx.bg-articles;
+  padding: {
+    top: 4.5rem;
+    bottom: 4.5rem;
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+//  Mixin que genera los 'background' de los tres tipos de 'articles'
+//  que existen en el documento.
+    @include mx.bg-articles('sm');
+    @include mx.size($h: 43.1rem);// height
+    display: flex;
+    align-items: center;
+    padding: {
+      top: 0;
+      bottom: 0;
+    }
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+//  Mixin que genera los 'background' de los tres tipos de 'articles'
+//  que existen en el documento.
+    @include mx.bg-articles('md');
+    @include mx.size($h: 64.1rem);//  height
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+//  Mixin que genera los 'background' de los tres tipos de 'articles'
+//  que existen en el documento.
+    @include mx.bg-articles('lg');
+    @include mx.size(
+      $h: 100vh,//  height
+      $hmin: 76.8rem,//  min-height
+      $hmax: 108rem,//  max-height
+    );
+  }
+}
+
+
+.principal-section__picture {
+//  Device Large
+  @include mx.responsive('lg') {
+//    Esta regla es para ajustar la ubicación del 'principal-section__picture'
+//    perteneciente al 'article--2' debido a que su ancho difiere de los demás.
+    .principal-section__article--2 & {
+      margin-left: f.percentage-margin(-1);//  Una columna de Bootstrap (ver estructura en 'utilities/functions').
+      padding-bottom: 3rem;
+    }
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+//    Esta regla es para ajustar la ubicación del 'principal-section__picture'
+//    perteneciente al 'article--2' debido a que su ancho difiere de los demás.
+    .principal-section__article--2 & {
+      margin-left: f.percentage-margin(-0.5);//  Media columna de Bootstrap.
+      padding-bottom: 0;
+    }
+  }
+}
+
+
+.principal-section__image {
+//  Device Large
+  @include mx.responsive('lg') {
+    filter: drop-shadow(10px 10px 15px #00000066);
+  }
+}
+
+
+.principal-section__description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+//  Device Large
+  @include mx.responsive('lg') {
+    align-items: flex-start;
+  }
+
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+//    Esta regla es para ajustar la ubicación de la 'principal-section__description'
+//    perteneciente al 'article--2' debido a que su orden de aparición difiere de las demás.
+    .principal-section__article--2 & {
+      margin-left: f.percentage-margin(1.5);//  Una columna y media de Bootstrap.
+    }
+  }
+}
+
+
+.principal-section__title {
+  @include mx.font-stack (
+    $t-a: center,//  text-align
+    $t-s: 0 0.1em 0.2em rgba(0, 0, 0, 0.15),//  text-shadow
+    $l-h: 1.05263em,//  line-height
+    $c: v.$blaze-orange,//  color
+    $f-s: 3rem,//  font-size
+    $f-w: 'bold',//  font-weight
+  );
+  margin-bottom: 0.605263157em;
+
+  @each $selector, $color in ( 2 v.$dodger-blue, 3 v.$light-blue) {
+    .principal-section__article--#{$selector} & {
+      @include mx.font-stack($c: $color);//  color
+    }
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 5.7rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack (
+      $t-a: left,//  text-align
+      $f-s: 3.8rem,//  font-size
+      $f-w: 'semi-bold',//  font-weight
+    );
+  }
+}
+
+
+.principal-section__parrafo {
+  @include mx.font-stack (
+    $t-a: center,//  text-align
+    $l-h: 1.75em,//  line-height
+    $l-e: 0.02em,//  letter-spacing
+    $c: v.$white,//  color
+    $f-s: 1.4rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin-bottom: 2.25em;
+
+  .principal-section__article--3 & {
+    @include mx.font-stack($c: v.$brown);//  color
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack (
+      $f-s: 1.6rem,//  font-size
+      $f-w: 'medium',//  font-weight
+    );
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack (
+      $t-a: left,//  text-align
+      $l-e: -0.012em,//  letter-spacing
+      $f-w: 'regular',//  font-weight
+    );
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @include mx.size(94.736842%);//  width / Limita su ancho para mantener un texto más homogéneo (decisión de diseño).
+    @include mx.font-stack ($l-e: v.$interletter);//  letter-spacing
+  }
+}
+
+
+.principal-section__button {
+  @include mx.font-stack (
+    $l-e: v.$interletter,//  letter-spacing
+    $c: v.$light-brown,//  color
+    $f-s: 1.8rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  transition: color 0.4s, background-color 0.4s;
+  border: 0.007692em solid v.$light-brown;
+  padding: 0.76923em 0.84615em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 2.6rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($c: v.$brown);//  color
+    border-color: v.$brown;
+  }
+
+  &:hover {
+    @include mx.font-stack($c: v.$brown);//  color
+    background-color: v.$light-brown;
+
+//    Device Large
+    @include mx.responsive('lg') {
+      @include mx.font-stack($c: v.$white);//  color
+      background-color: v.$brown;
+    }
+  }
+
+//  Modificador para ajustar propiedades de color del 'button' del último 'article'.
+  &--color {
+    @include mx.font-stack($c: v.$brown);//  color
+    border-color: v.$brown;
+
+//    Device Large
+    @include mx.responsive('lg') {
+      @include mx.font-stack($c: v.$orange);//  color
+      border-color: v.$orange;
+    }
+
+    &:hover {
+      @include mx.font-stack($c: v.$white);//  color
+      background-color: v.$brown;
+
+//      Device Medium
+      @include mx.responsive('lg') {
+        background-color: v.$orange;
+      }
+    }
+  }
+}

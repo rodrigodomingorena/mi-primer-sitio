@@ -1,0 +1,13 @@
+@charset 'utf-8';
+
+
+@use 'base';
+
+@use 'layout/header';
+
+@use 'views/index';
+@use 'views/menu';
+@use 'views/plato';
+@use 'views/contact';
+
+@use 'layout/footer';

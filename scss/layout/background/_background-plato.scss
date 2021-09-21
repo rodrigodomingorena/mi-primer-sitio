@@ -1,0 +1,25 @@
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                             BACKGROUND PLATO                              //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                              ESTRUCTURA HTML
+//
+//  <body c="body-background">
+//    <header></header>
+//    <main></main>
+//    <footer></footer>
+//  </body>
+
+
+
+
+.body-background {
+	background: v.$light-brown;
+	background: radial-gradient(closest-side at 50% 50%, v.$white 0%, v.$light-brown 100%);
+}

@@ -1,0 +1,22 @@
+{
+  "name": "mi-primer-sitio",
+  "version": "1.0.0",
+  "description": "Desarrollo de mi primer sitio web con puro HTML y CSS/Sass",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigodomingorena/mi-primer-sitio.git"
+  },
+  "author": "Rodrigo Domingorena",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodrigodomingorena/mi-primer-sitio/issues"
+  },
+  "homepage": "https://github.com/rodrigodomingorena/mi-primer-sitio#readme",
+  "dependencies": {
+    "sass": "^1.39.0"
+  }
+}

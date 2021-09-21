@@ -1,0 +1,197 @@
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                                 FORM                                      //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                            ESTRUCTURA HTML
+//
+//  <section c= "contact">
+//    <div>
+//      <form c="contact__form">
+//        <div>
+//          <div>
+//            <legend c="contact__legend"></legend>
+//          </div>
+//          <div>
+//            <input c="contact__input"></input>
+//          </div>
+//          <div>
+//            <textarea c="contact__textarea"></textarea>
+//          </div>
+//        </div>
+//      </form>
+//    </div>
+//  </section>
+//
+//
+//   Visualizar el documento HTML para poder conocer las
+//   clases de Bootstrap que trabajan en conjunto con las 
+//   declaradas en esta hoja de estilo.
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.contact__form {
+  margin: 4.1rem auto 4.8rem;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    margin: 5.3rem auto 6rem;
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin: 13.4rem auto;
+  }
+
+  &--contact {
+    margin: 8.2rem auto 7.5rem;
+
+//    Device Small
+    @include mx.responsive('sm') {
+      margin-top: 10.6rem;
+    }
+
+//    Device Medium;
+    @include mx.responsive('md') {
+      margin-top: 7.5rem;
+    }
+  }
+}
+
+
+.contact__legend {
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.05263em,//  line-height
+    $c: v.$orange,//  color
+    $f-s: 2.6rem,//  font-size
+    $f-w: 'light',//  font-weight
+  );
+  margin-bottom: 1.21052em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+  }
+}
+
+
+
+//===================================================================
+//  'Placeholders' que se extenderán a los próximos selectores
+//===================================================================
+
+%font-stack-form {
+  @include mx.font-stack(
+    $l-e: v.$interletter,//  letter-spacing
+    $c: v.$brown,//  color
+    $f-s: 1.4rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+}
+
+%input-textarea-custom {
+  @include mx.size(100%, 3.6875em);//  width & height
+  margin-bottom: 1.5em;
+  border: 0.0625em solid v.$brown;
+  padding: 1.25em;
+}
+
+%opacity {
+  opacity: 0.4;
+}
+
+//  Device Medium
+@include mx.responsive('md') {
+  %font-size-md {
+    @include mx.font-stack($f-s: 1.6rem);//  font-size
+  }
+}
+
+//===================================================================
+//  Cierre de 'placeholders'
+//===================================================================
+
+
+
+.contact__input {
+  @extend %font-stack-form;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @extend %font-size-md;
+  }
+
+  &:not([type="submit"]) {
+    @extend %input-textarea-custom;
+
+//    Device Medium
+    @include mx.responsive('md') {
+      @include mx.size(96.842105%);//  width
+    }
+  }
+
+  &::placeholder {
+    @extend %font-stack-form,
+            %opacity;
+
+//    Device Medium
+    @include mx.responsive('md') {
+       @extend %font-size-md;
+    }
+  }
+
+  &[type="submit"] {
+    @include mx.size(5.73076em, 2.76923em);//  width & height
+    @include mx.font-stack(
+      $c: v.$white,//  color
+      $f-s: 1.8rem,//  font-size
+    );
+    transition: background-color 0.4s;
+    border: none;
+    background-color: v.$light-blue;
+    cursor: pointer;
+
+//    Device Medium
+    @include mx.responsive('md') {
+      @include mx.font-stack($f-s: 2.6rem);//  font-size
+    }
+
+    &:hover {
+      background-color: v.$bondi-blue;
+    }
+  }
+}
+
+
+.contact__textarea {
+  @extend %font-stack-form, 
+          %input-textarea-custom;
+  @include mx.size($h: 10.4375em);//  height
+  @include mx.font-stack($l-h: 1.75em);//  line-height
+  margin-bottom: 3.5em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @extend %font-size-md;
+  }
+
+  &::placeholder {
+    @extend %font-stack-form,
+            %opacity;
+
+//    Device Medium
+    @include mx.responsive('md') {
+      @extend %font-size-md;
+    }
+  }
+}

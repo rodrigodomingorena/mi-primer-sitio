@@ -1,0 +1,104 @@
+@use "sass:map";
+@use "sass:math";
+
+@use "maps" as mp;
+@use "variables" as v;
+
+
+
+
+//===================================================================
+//  Percentage Margin
+//===================================================================
+
+//  Esta función fue creada debido a que en el proyecto se utilizan muchas veces
+//  valores de 'margin' en porcentajes que hacen referencia a las columnas del
+//  'grid' que ofrece Bootstrap.
+
+//  Por ejemplo, si quiero que un elemento tenga un 'margin-left' de dos columnas
+//  de Bootstrap, en vez de escribir '16.666666666667%', llamo a esta función de esta
+//  manera: 'percentage-margin(2)' y devuelve como resultado el número que acabo de
+//  mostrar. Esto es muy útil ya que no hay que andar haciendo cálculos cada vez que
+//  necesito un 'margin' específico (1, 1.5 o 3 columnas, por ej.) al mismo tiempo
+//  que es mucho más intuitivo y semántico ver un '2' en alusión a dos columnas que
+//  un número como '16.666666666667%'.
+
+@function percentage-margin($value) {
+  @return math.percentage(math.div(1, math.div(12, $value)));
+}
+
+//===================================================================
+//  Cierre de Percentage Margin
+//===================================================================
+
+
+
+//===================================================================
+//  FW
+//===================================================================
+
+//  Función que recorre y toma un valor de un mapa a partir de un $value dado.
+
+@function fw($value) {
+  @return map.get(mp.$font-weight, $value);
+}
+
+//===================================================================
+//  Cierre de FW
+//===================================================================
+
+
+
+//===================================================================
+//  Spacing Calculator
+//===================================================================
+
+//  Funciones que permiten calcular propiedades 'top' y 'bottom' en base a la
+//  variable '$size-nutricional' para la hoja de estilos 'info-nutricional'.
+//  La unidad $f-s introducida corresponde al 'font-size' que tenga en cada breakpoint
+//  el elemento 'info-nutricional__button'.
+
+
+//  Entrega la variable sin unidades (de 0.384615em a 0.384615) 
+//  para poder ser compatible con los 'rem' de $f-s.
+
+$spacing-unitless: math.div(v.$size-nutricional, 1em);
+
+
+//  Introduzco un $f-s y calcula la proporción 0.384615 de ese valor. Luego los divide
+//  por '2' ya que los 'top' necesitan ser a la mitad y, por último, negativos, lo cual se
+//  logra con la multiplicación por '-1'. El resultado es en 'rem'.
+
+@function spacing-calculator-top($f-s) {
+  @return math.div(($spacing-unitless * $f-s), 2) * -1;
+}
+
+
+//  Introduzco un $f-s y calcula la proporción 0.384615 de ese valor. El resultado es en 'rem'.
+
+@function spacing-calculator-bottom($f-s) {
+  @return ($spacing-unitless * $f-s);
+}
+
+
+//===================================================================
+//  Cierre de Spacing Calculator
+//===================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

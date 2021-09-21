@@ -1,0 +1,563 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                         TITLE SECTION PLATO                               //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <section c= "title-section">
+//    <div>
+//      <article c="title-section__article">
+//        <h1 c="title-section__title"></h1>
+//        <p c="title-section__price"></p>
+//        <p c="title-section__parrafo"></p>
+//        <div>
+//          <a c="title-section__button"></a>
+//        </div>
+//      </article>
+//      <picture c="title-section__picture">
+//        <source>
+//        <img c="title-section__image">
+//      </picture>
+//      <article c="title-section__cards">
+//        <a>
+//          <article c="title-section__card">
+//            <picture c="title-section__card__picture">
+//              <source>
+//              <img c="title-section__card__image">
+//            </picture>
+//            <h2 c="title-section__card__title"></h2>
+//          </article>
+//        </a>
+//      </article>
+//    </div>
+//  </section>
+//
+//
+//   Visualizar el documento HTML para poder conocer las
+//   clases de Bootstrap que trabajan en conjunto con las
+//   declaradas en esta hoja de estilo.
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.title-section--plato {
+  padding-top: 10.3rem;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    padding-top: 4.3rem;
+  }
+}
+
+
+.title-section__article--plato {
+//  Esto controla que el elemento pueda tener un ancho y una altura con valores
+//  mínimos y máximos, para evitar que sus dimensiones se contraigan o expandan por
+//  demás afectando así el diseño en los dipositivos cuyo ancho sea menor a 576px.
+//  El 'height' depende del 'viewport width' ya que debajo suyo hay un 'title-section__picture'
+//  que se contrae y expande de acuerdo al ancho del dispositivo, esto hace que en pantallas
+//  más pequeñas el alto de este elemento deba ser menor ya que el 'title-section__picture'
+//  que lo acompaña es más pequeño y necesita menos espacio en el 'eje y' para adaptarse
+//  al diseño. Pobrar en el navegador con las herramientas para desarrollador para verlo
+//  y entenderlo de una forma más visual.
+  @include mx.size(
+    $wmin: 26rem,//  min-width
+    $wmax: 31.25rem,//  max-width
+    $h: 131.5375vw,//  height
+    $hmin: 42.092rem,//  min-height
+    $hmax: 45.159rem,//  max-height
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: v.$orange-02;
+  padding: 3.3rem 0 0;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @extend %size-sm;//  Placeholder declarado al término de este componente.
+    @include mx.size(
+      $wmax: none,//  max-width / Ya no necesita la limitación de ancho máximo declarada anteriormente.
+      $h: 45.5rem,//  height / Ahora la altura puede ser fija ya que el ancho del 'title-section__picture' será fijo.
+    );
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @extend %size-md;//  Placeholder declarado al término de este componente.
+    align-items: flex-start;
+    padding: 2.8rem 0 3.78rem 6.5rem;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    padding: 3.7rem 0 4.8rem 7.1rem;
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    padding: 4.5rem 0 5.8rem 8.5rem;
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    padding: 6.78rem 0 6.1rem 8.5rem;
+  }
+
+//  Modificador debido a que en 'plato-5' existe un 'title-section__picture'
+//  con distintas proporciones que obliga a adaptar el diseño.
+  &-5 {
+    @include mx.size(
+      $h: 117.928125vw,//  height
+      $hmin: 37.737rem,//  min-height
+      $hmax: 40.768rem,//  max-height
+    );
+
+//    Device Small
+    @include mx.responsive('sm') {
+      @extend %size-sm;//  Placeholder declarado al término de este componente.
+      @extend %height-5-8;//  Placeholder declarado al término de este componente.
+    }
+
+//    Device Medium
+    @include mx.responsive('md') {
+      @extend %size-md;//  Placeholder declarado al término de este componente.
+    }
+  }
+
+//  Modificador debido a que en 'plato-8' existe un 'title-section__title' de una
+//  sola línea que obliga a adaptar el diseño.
+  &-8 {
+    @include mx.size(
+      $h: 122.1875vw,//  height
+      $hmin: 39.1rem,//  min-height
+      $hmax: 42.525rem,//  max-height
+    );
+
+//    Device Small
+    @include mx.responsive('sm') {
+      @extend %size-sm;//  Placeholder declarado al término de este componente.
+      @extend %height-5-8;//  Placeholder declarado al término de este componente.
+    }
+
+//    Device Medium
+    @include mx.responsive('md') {
+      @extend %size-md;//  Placeholder declarado al término de este componente.
+    }
+  }
+}
+
+//===================================================================
+//  'Placeholders' que se extendieron a los selectores anteriores
+//===================================================================
+
+@include mx.responsive('sm') {
+  %size-sm {
+    @include mx.size(
+      $hmin: 0,
+      $hmax: none,
+    );
+  }
+
+  %height-5-8 {
+    @include mx.size($h: 41.8rem);
+  }
+}
+
+@include mx.responsive('md') {
+  %size-md {
+    @include mx.size($h: auto);
+  }
+}
+
+//===================================================================
+//  Cierre de 'placeholders'
+//===================================================================
+
+
+
+.title-section__title--plato {
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.0526315em,//  line-height
+    $c: v.$light-blue,//  color
+    $f-s: 2.6rem,//  font-size
+    $f-w: 'semi-bold',//  font-weight
+  );
+  margin-bottom: 0.22631578em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack(
+      $t-a: left,//  text-align
+      $f-s: 3.4rem,//  font-size
+    );
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    margin-bottom: 0.605263em;
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 4.4rem);//  font-size
+  }
+}
+
+
+.title-section__price {
+  @include mx.font-stack(
+    $l-e: v.$interletter,//  letter-spacing
+    $c: v.$orange,//  color
+    $f-s: 1.8rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin-bottom: 0.48076923em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 2.3rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($f-s: 2.6rem);//  font-size
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    margin-bottom: 0.961538em;
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 3rem);//  font-size
+  }
+}
+
+
+.title-section__parrafo--plato {
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.5em,//  line-height
+    $c: v.$brown,//  color
+    $f-s: 1.2rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin-bottom: 1.99375em;
+
+//  Device 320px
+  @include mx.responsive(320px) {
+//  Una vez llegados a 320px se puede agrandar el 'font-size' sin que se rompa el diseño.
+    @include mx.font-stack($f-s: 1.4rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack(
+      $t-a: left,//  text-align
+      $f-s: 1.6rem,//  font-size
+    );
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+    margin-bottom: 2.5em;
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 2rem);//  font-size
+  }
+}
+
+
+.title-section__button {
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-e: v.$interletter,//  letter-spacing
+    $f-s: 1.4rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  transition: color 0.4s, background-color 0.4s;
+  padding: 0.55555em 0.66666em;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.6rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 2rem);//  font-size
+  }
+
+  &:first-child {
+    @include mx.font-stack($c: v.$white);//  color
+    margin-right: 1.111111em;
+    background-color: v.$light-blue;
+
+    &:hover {
+      @include mx.font-stack($c: v.$white);//  color
+      background-color: v.$bondi-blue;
+    }
+  }
+
+  &:last-child {
+    @include mx.font-stack($c: v.$orange);//  color
+    border: 0.05555em solid v.$orange;
+
+    &:hover {
+      @include mx.font-stack($c: v.$white);//  color
+      background-color: v.$orange;
+    }
+  }
+}
+
+
+.title-section__picture {
+//  Esto controla que el elemento pueda tener un ancho con valores mínimos y máximos,
+//  para evitar que sus dimensiones se contraigan o expandan por demás afectando así
+//  el diseño en los dipositivos cuyo ancho sea menor a 576px.
+//  (Ver estructura en 'utilities/mixins')
+  @include mx.size-plato;
+//  El 'margin-top' depende del 'viewport width' ya que este busca ser siempre la
+//  mitad de su altura (en valor negativo). Por esto, a medida que se contrae o expande
+//  el elemento (dentro de sus min-max-width) y a su vez su altura lo acompaña, este margin
+//  debe ser mayor o menor. Una forma de acercarse a este comportamiento con puro HTML y CSS
+//  puede ser mediante la siguiente función 'clamp()'.
+  margin-top: clamp(-15.52rem, -41.4021333vw, -12.91rem);
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.size($wmax: none);//  max-width / Ya no necesita la limitación de ancho máximo declarada anteriormente.
+    margin-top: -15.65rem;//  Ahora el margen puede ser fijo ya que el ancho (y con él su altura) del elemento será fijo.
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @extend %margin-top;//  Placeholder declarado al término de este componente.
+    margin-left: f.percentage-margin(-3);//  Tres columnas de Bootstrap (ver estructura en 'utilities/functions').
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    margin: {
+      right: f.percentage-margin(0.5);//  Media columna de Bootstrap.
+      left: f.percentage-margin(-2.5);//  Dos columnas y media de Bootstrap.
+    }
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    margin: {
+      right: 0;
+      left: f.percentage-margin(-2);//  Dos columnas de Bootstrap.
+    }
+  }
+
+//  Modificador debido a que en 'plato-5' existe un 'title-section__picture'
+//  con distintas proporciones que obliga a adaptar el diseño.
+  &--plato-5 {
+    margin-top: clamp(-14.48rem, -38.6229333vw, -12.05rem);
+
+//    Device Small
+    @include mx.responsive('sm') {
+      margin-top: -14.6rem;
+    }
+
+//    Device Medium
+    @include mx.responsive('md') {
+      @extend %margin-top;//  Placeholder declarado al término de este componente.
+      margin-left: f.percentage-margin(-4);//  Cuatro columnas de Bootstrap.
+    }
+
+//    Device Large
+    @include mx.responsive('lg') {
+      margin-left: f.percentage-margin(-3.5);//  Tres columnas y media de Bootstrap.
+    }
+
+//    Device X-Large
+    @include mx.responsive('xl') {
+      margin-left: f.percentage-margin(-3);//  Tres columnas de Bootstrap.
+    }
+  }
+}
+
+//===================================================================
+//  'Placeholder' que se extendió a selectores anteriores
+//===================================================================
+
+@include mx.responsive('md') {
+  %margin-top {
+    margin-top: 0;
+  }
+}
+
+//===================================================================
+//  Cierre de 'placeholder'
+//===================================================================
+
+
+.title-section__image {
+  filter: drop-shadow(10px 10px 20px #00000066);
+}
+
+
+.title-section__cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 6.7rem;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    flex-direction: row;
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin-top: 6.42rem;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    flex-direction: column;
+    margin-top: 0;
+  }
+}
+
+
+.title-section__card {
+  @include mx.size(16rem, 17.6rem);//  width & height
+  @include mx.cards;//  Mixin que genera los estilos de la 'card' (ver estructura en 'utilities/mixins').
+  margin-bottom: 4rem;
+  box-shadow: v.$box-shadow-3;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    margin: {
+      right: 4rem;
+      bottom: 0;
+    }
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.size(30rem, 15rem);//  width & height
+    flex-direction: row;
+    margin-right: 6rem;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.size(16rem, 17.6rem);//  width & height
+    flex-direction: column;
+    margin: {
+      right: 0;
+      bottom: 2.8rem;
+    }
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @include mx.size(15rem, 21.1rem);//  width & height
+  }
+}
+
+
+.title-section__card__picture {
+  margin-bottom: 2rem;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin: {
+      right: 2.8rem;
+      bottom: 0;
+    }
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    margin: {
+      right: 0;
+      bottom: 2rem;
+    }
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    margin-bottom: 2.7rem;
+  }
+
+//  Modificador debido a que en 'plato-5' existe un 'title-section__card__picture'
+//  con distintas proporciones que obliga a adaptar el diseño.
+  &--plato-5 {
+    margin-bottom: 0.82rem;
+
+//    Device Medium
+    @include mx.responsive('md') {
+      margin-bottom: 0;
+    }
+
+//    Device Large
+    @include mx.responsive('lg') {
+      margin-bottom: 0.82rem;
+    }
+
+//    Device X-Large
+    @include mx.responsive('xl') {
+      margin-bottom: 1.6rem;
+    }
+  }
+}
+
+
+.title-section__card__image {
+  filter: drop-shadow(3px 3px 5px #00000066);
+}
+
+
+.title-section__card__title {
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.25em,//  line-height
+    $c: v.$light-blue,//  color
+    $f-s: 1.6rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin-bottom: 0;//  Elimina el 'margin-bottom' predeterminado de Bootstrap.
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($t-a: left);//  text-align
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($t-a: center);//  text-align
+  }
+}

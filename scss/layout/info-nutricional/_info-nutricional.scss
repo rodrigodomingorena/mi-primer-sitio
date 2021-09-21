@@ -1,0 +1,593 @@
+@use "../../utilities/functions" as f;
+@use "../../utilities/mixins" as mx;
+@use "../../utilities/variables" as v;
+
+
+//===========================================================================//
+//                                                                           //
+//                           INFO-NUTRICIONAL                                //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                           ESTRUCTURA HTML
+//
+//  <section c= "info-nutricional">
+//    <div>
+//      <article c="info-nutricional__principal">
+//        <h2 c="info-nutricional__title"></h2>
+//        <p c="info-nutricional__kcal"></p>
+//        <p c="info-nutricional__portion"></p>
+//      </article>
+//      <article c="info-nutricional__details">
+//        <div>
+//          <button c="info-nutricional__button"></button>
+//          <div c="info-nutricional__content &--grasas/carbohidratos/proteinas">
+//            <h2 c="info-nutricional__content__title"></h2>
+//            <div c="info-nutricional_g-proportion">
+//              <p c="info-nutricional__g"></p>
+//              <ul c="info-nutricional__proportion">
+//                <li>
+//                  <div></div>
+//                  <div></div>
+//                </li>
+//              </ul>
+//            </div>
+//            <p c="info-nutricional__description"></p>
+//          </div>
+//        </div>
+//      </article>
+//    </div>
+//  </section>
+//
+//
+//   Visualizar el documento HTML para poder conocer las
+//   clases de Bootstrap que trabajan en conjunto con las
+//   declaradas en esta hoja de estilo.
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+.info-nutricional {
+  margin: {
+    top: 6.7rem;
+    bottom: 6.7rem;
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    margin-bottom: 14rem;
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    margin: {
+      top: 11rem;
+      bottom: 23rem;
+    }
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    margin-top: 23rem;
+  }
+}
+
+
+.info-nutricional__principal {
+  @include mx.size-plato;//  Mixin que controla el 'min-width' y 'max-width'.(Ver estructura en 'utilities/mixins').
+  margin: 0 auto;
+  box-shadow: v.$box-shadow-1;
+  background: {
+    color: v.$orange-02;
+    repeat: no-repeat;
+    position: center;
+  }
+  padding: 3.2rem 0 3.63rem;
+
+//  Mixin que genera los distintos tipos de 'background' dependiendo de que 'info-nutricional__principal'
+//  pertenezca a un 'plato' específico, a través de los distintos breakpoints.
+//  (Ver estrutura en 'utilities/mixins').
+  @include mx.bg-info-nutricional;
+
+//  Modificador debido a que en 'plato-5' existe una imagen en 'background'
+//  con distintas proporciones que obliga a adaptar el diseño.
+  &--plato-5 {
+//    Device XX-Large
+    @include mx.responsive('xxl') {
+      background-position: 45rem;
+    }
+  }
+}
+
+
+.info-nutricional__title {
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 1.31578947em,//  line-height
+    $c: v.$bondi-blue,//  color
+    $f-s: 1.5rem,//  font-size
+    $f-w: 'semi-bold',//  font-weight
+  );
+  margin-bottom: 0.42105263em;
+
+//  Device 360px
+  @include mx.responsive(360px) {
+//  Una vez llegados a 360px se puede agrandar el 'font-size' sin que se rompa el diseño.
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 2.6rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 3.4rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @extend %text-left;//  'Placeholder' declarado unos componentes más adelante.
+    @include mx.font-stack($f-s: 3.8rem);//  font-size
+  }
+}
+
+
+.info-nutricional__kcal {
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-e: v.$interletter,//  letter-spacing
+    $c: v.$orange,//  color
+    $f-s: 4rem,//  font-size
+    $f-w: 'medium',//  font-weight
+  );
+  margin-bottom: 0.25em;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 5.7rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 7.6rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @extend %text-left;//  'Placeholder' declarado un componente más adelante.
+  }
+}
+
+
+//===================================================================
+//  'Placeholder' que se extenderá a próximos selectores
+//===================================================================
+
+%font-stack-portion-button {
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $c: v.$brown,//  color
+    $f-s: 1.4rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+}
+
+//===================================================================
+//  Cierre de 'placeholder'
+//===================================================================
+
+
+.info-nutricional__portion {
+  @extend %font-stack-portion-button;
+  margin-bottom: 0;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 1.6rem);//  font-size
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @extend %text-left;//  'Placeholder' declarado al término de este componente.
+  }
+}
+
+
+//===================================================================
+//  'Placeholder' que se extendió a selectores anteriores
+//===================================================================
+
+@include mx.responsive('lg') {
+  %text-left {
+    @include mx.font-stack($t-a: left);
+  }
+}
+
+//===================================================================
+//  Cierre de 'placeholder'
+//===================================================================
+
+
+.info-nutricional__details {
+  @include mx.size-plato;//  Mixin que controla el 'min-width' y 'max-width'.
+  margin: 0 auto;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.size-plato(0, none);//  min-width & max-width
+  }
+}
+
+
+.info-nutricional__button {
+  @extend %font-stack-portion-button;
+  @include mx.size(100%);//  width
+  transition: color 0.4s, background-color 0.4s;
+//  El 'margin' top y bottom son puestos en una variable ya que, principalmente, su valor va a ser muy
+//  utilizado en las próximas reglas debido a que los espacios entre los 'info-nutricional__button'
+//  y los 'info-nutricional__content' se van a basar en él. Equivale a '0.38461538em'.
+  margin: v.$size-nutricional 0;
+  border: none;
+  box-shadow: 0.115384em 0.115384em v.$size-nutricional #00000020;
+  background-color: v.$light-blue-02;
+  cursor: pointer;
+  padding: v.$size-nutricional 0;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.font-stack($f-s: 2.2rem);//  font-size
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @include mx.font-stack($f-s: 2.6rem);//  font-size
+  }
+
+  &:hover {
+    @include mx.font-stack($c: v.$white);//  color
+    background-color: v.$light-blue-05;
+  }
+}
+
+
+.info-nutricional__content {
+//  **Funciones que permiten calcular el 'margin-top' y 'margin-bottom' en base a la 
+//  variable '$size-nutricional'. La unidad introducida corresponde al 'font-size'
+//  que tenga en cada breakpoint el elemento 'info-nutricional__button'. Así, el
+//  'margin-top' será la mitad (en valor negativo) del 'margin-bottom' del 'button' al
+//  que corresponda el 'content', quedando así, compositivamente, más cerca del botón
+//  que referencia a su contenido. El 'margin-bottom' será igual que el del 'button'
+//  padre, alejando así al botón que lo sigue, el cual no está relacionado con su
+//  contenido. (Ver estructura en 'utilites/functions').**
+  margin: {
+    top: f.spacing-calculator-top(1.4rem);//**
+    bottom: f.spacing-calculator-bottom(1.4rem);//**
+  }
+  box-shadow: v.$box-shadow-1;
+  background-color: v.$light-blue-05;
+  padding: 2.94rem 0 3.36rem;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    margin: {
+      top: f.spacing-calculator-top(2.2rem);//**
+      bottom: f.spacing-calculator-bottom(2.2rem);//**
+    }
+    padding: 4.5rem 4.3rem 6.23rem;
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    padding: 3.1rem 5.4rem 4.86rem;
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    margin: {
+      top: f.spacing-calculator-top(2.6rem);//**
+      bottom: f.spacing-calculator-bottom(2.6rem);//**
+    }
+    padding: 4.2rem 8.6rem 6.63rem;
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    padding: 4.8rem 10.2rem 7.7rem;
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    padding: 5.56rem 12.1rem 8.9rem;
+  }
+}
+
+
+.info-nutricional__content__title {
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-e: v.$interletter,//  letter-spacing
+    $c: v.$white,//  color
+    $f-s: 3rem,//  font-size
+    $f-w: 'medium',//  font-weight
+  );
+  margin-bottom: 0.28947368em;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @extend %font-size-sm;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack($t-a: left);//  text-align
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @extend %font-size-lg;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @extend %font-size-xl;//  'Placeholder' declarado unos componentes más adelante.
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @extend %font-size-xxl;//  'Placeholder' declarado unos componentes más adelante.
+  }
+}
+
+
+.info-nutricional__g-proportion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+//  Device Medium
+  @include mx.responsive('md') {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+}
+
+
+.info-nutricional__g {
+  @include mx.size(4.94736842em);//  width
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $c: v.$white,//  color
+    $f-s: 3.4rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin-bottom: 0;//  Elimina el margin predeterminado que tiene en Bootstrap.
+  box-shadow: 0.06578947em 0.06578947em 0.13157894em #00000050;
+  background-color: v.$orange;
+  padding: 0.55263157em 0;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @extend %font-size-sm;//  'Placeholder' declarado al término de este componente.
+  }
+
+//  Device Large
+  @include mx.responsive('lg') {
+    @extend %font-size-lg;//  'Placeholder' declarado al término de este componente.
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @extend %font-size-xl;//  'Placeholder' declarado al término de este componente.
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @extend %font-size-xxl;//  'Placeholder' declarado al término de este componente.
+  }
+}
+
+
+//===================================================================
+//  'Placeholders' que se extendieron a los selectores anteriores
+//===================================================================
+
+@include mx.responsive('sm') {
+  %font-size-sm {
+    @include mx.font-stack($f-s: 4.8rem);//  font-size
+  }
+}
+
+@include mx.responsive('lg') {
+  %font-size-lg {
+    @include mx.font-stack($f-s: 6.4rem);//  font-size
+  }
+}
+
+@include mx.responsive('xl') {
+  %font-size-xl {
+    @include mx.font-stack($f-s: 7.6rem);//  font-size
+  }
+}
+
+@include mx.responsive('xxl') {
+  %font-size-xxl {
+    @include mx.font-stack($f-s: 8.8rem);//  font-size
+  }
+}
+
+//===================================================================
+//  Cierre de 'placeholders'
+//===================================================================
+
+
+
+.info-nutricional__proportion {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;//*
+  padding-left: 0;//*
+  list-style: none;//* Estas reglas eliminan los estilos predeterminados que asigna Bootstrap a una 'ul'.
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.size(100%);//  width
+    flex-direction: row;
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.size(auto);//  width
+    display: block;
+  }
+
+  li {
+//  Estas propiedades se transimitirán a sus 'divs hijos'
+    @include mx.font-stack(
+      $c: v.$white,//  color
+      $f-s: 1.6rem,//  font-size
+      $f-w: 'regular',//  font-weight
+    );
+
+//    Device Small
+    @include mx.responsive('sm') {
+      @include mx.font-stack($f-s: 1.65rem);//  font-size
+    }
+
+//    Device Large
+    @include mx.responsive('lg') {
+      @include mx.font-stack($f-s: 2.2rem);//  font-size
+    }
+
+//    Device X-Large
+    @include mx.responsive('xl') {
+      @include mx.font-stack($f-s: 2.6rem);//  font-size
+    }
+
+//    Device XX-Large
+    @include mx.responsive('xxl') {
+      @include mx.font-stack($f-s: 3rem);//  font-size
+    }
+
+    &:first-child {
+      margin-top: 1.60625em;
+
+//      Device Small
+      @include mx.responsive('sm') {
+        margin-top: 0;
+
+        .info-nutricional__content--carbohidratos & {
+          margin-right: 0.77575757em;
+        }
+      }
+
+//      Device Medium
+      @include mx.responsive('md') {
+        .info-nutricional__content--carbohidratos & {
+          margin-right: 0;
+        }
+      }
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 0.8em;
+
+//      Device Small
+      @include mx.responsive('sm') {
+        margin-bottom: 0;
+      }
+
+//      Device Medium
+      @include mx.responsive('md') {
+        margin-bottom: 0.40384615em;
+      }
+    }
+  }
+
+  div {
+//  Los 'div:first-child' corresponden a los 'divs' que contienen los valores nutricionales.
+//  Por ejemplo: '4,02g', '3,254g', '20,703g'.
+    &:first-child {
+      @include mx.size(5.07692307em);//  width
+      @include mx.font-stack($t-a: center);//  text-align
+      box-shadow: 0.19230769em 0.19230769em v.$size-nutricional #00000050;
+      background-color: v.$brown;
+      padding: v.$size-nutricional 0;
+
+//      Device Small
+      @include mx.responsive('sm') {
+        margin-top: 1.55757575em;
+      }
+
+//      Device Medium
+      @include mx.responsive('md') {
+        margin: 0 0.42307692em;
+      }
+    }
+
+//  Los 'div:last-child' corresponden a los 'divs' que contienen el nombre de los componentes nutricionales.
+//  Por ejemplo: 'Saturada', 'Poliinsaturada', 'Monoinsaturada'.
+    &:last-child {
+      @include mx.font-stack($f-s: 1.4rem);//  font-size
+      margin-top: 0.40769230em;
+
+//      Device Small
+      @include mx.responsive('sm') {
+        @include mx.font-stack($f-s: 1.3rem);//  font-size
+      }
+
+//      Device Medium
+      @include mx.responsive('md') {
+        @include mx.font-stack($f-s: inherit);//  font-size / Pasa a heredar el 'font-size' de su padre 'li'.
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+
+.info-nutricional__description {
+  @include mx.size(80%);//  width
+  @include mx.font-stack(
+    $t-a: center,//  text-align
+    $l-h: 2em,//  line-height
+    $l-e: -0.01em,//  letter-spacing
+    $c: v.$brown,//  color
+    $f-s: 1.4rem,//  font-size
+    $f-w: 'regular',//  font-weight
+  );
+  margin: 1.8333333333em auto 0;
+
+//  Device Small
+  @include mx.responsive('sm') {
+    @include mx.size(auto);//  width
+    margin: 1.8333333333em 0 0;
+  }
+
+//  Device Medium
+  @include mx.responsive('md') {
+    @include mx.font-stack(
+      $t-a: left,//  text-align
+      $f-s: 1.5rem,//  font-size
+    );
+  }
+
+//  Device X-Large
+  @include mx.responsive('xl') {
+    @include mx.font-stack($f-s: 1.8rem);//  font-size
+  }
+
+//  Device XX-Large
+  @include mx.responsive('xxl') {
+    @include mx.font-stack($f-s: 2rem);//  font-size
+  }
+}

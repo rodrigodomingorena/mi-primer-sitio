@@ -1,0 +1,30 @@
+@use "../../utilities/mixins" as mx;
+
+
+//===========================================================================//
+//                                                                           //
+//                             BACKGROUND MENU                               //
+//                                                                           //
+//===========================================================================//
+//
+//
+//                             ESTRUCTURA HTML
+//
+//  <main c= "main-background">
+//    <section></section>
+//    <section></section>
+//  </main>
+//
+//
+//  ¡IMPORTANTE! El 'rem' equivale a 10px ya que el 'font-size' de la etiqueta 'html' está al 62,5%.
+
+
+
+
+
+.main-background {
+//  Mixin que genera los 'background-image' del elemento 'main'
+//  del documento 'menu', dependiendo de los distintos breakpoints y
+//  pantallas de visualización. (Ver estructura en 'utilities/mixins')
+  @include mx.bg-main;
+}
