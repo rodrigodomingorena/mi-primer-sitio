@@ -103,7 +103,7 @@
 //  Device X-Large
   @include mx.responsive('xl') {
     .header--plato & {
-      margin-left: f.percentage-margin(1);//..Vuelve a una columna de Bootstrap.
+      margin-left: f.percentage-margin(1);//  Vuelve a una columna de Bootstrap.
     }
   }
 }
@@ -137,7 +137,7 @@
 
 //  Esta regla sobreescribe la url predeterminada de Bootstrap en dos características:
 //  1-(stroke='rgba%28255, 255, 255, 1%29') por (stroke='rgba%28255, 255, 255, 0.55%29') bajando la opacidad del ícono.
-//  2-(stroke-linecap='square') por (stroke-linecap='round') eliminando así sus terminaciones redondeadas por otras cuadradas.
+//  2-(stroke-linecap='round') por (stroke-linecap='square') eliminando así sus terminaciones redondeadas por otras cuadradas.
 .header__nav {
   .header__toggler-icon {
     background-image: 

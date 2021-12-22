@@ -174,7 +174,7 @@
 
 
 .contact__textarea {
-  @extend %font-stack-form, 
+  @extend %font-stack-form,
           %input-textarea-custom;
   @include mx.size($h: 10.4375em);//  height
   @include mx.font-stack($l-h: 1.75em);//  line-height

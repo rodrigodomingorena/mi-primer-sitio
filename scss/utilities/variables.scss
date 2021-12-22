@@ -37,8 +37,9 @@ $blue-gradient: rgba(82, 201, 221, 1);
 //  Tono naranja  //
 
 $orange: rgba(237, 125, 59, 1);
-$orange-02: color.adjust($orange, $alpha: -0.8);
 $orange-05: color.adjust($orange, $alpha: -0.5);
+$orange-02: color.adjust($orange, $alpha: -0.8);
+
 
 $blaze-orange: rgba(255, 95, 0, 1);
 

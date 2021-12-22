@@ -137,8 +137,8 @@
 //  Device Medium
   @include mx.responsive('md') {
     @include mx.size(
-      $wmax: 30rem,//  height
-      $h: 48.6rem,//  max-width
+      $wmax: 30rem,//  max-width
+      $h: 48.6rem,//  height
     );
     align: {
       content: center;

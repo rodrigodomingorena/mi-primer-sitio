@@ -209,7 +209,7 @@
 
 @include mx.responsive('lg') {
   %text-left {
-    @include mx.font-stack($t-a: left);
+    @include mx.font-stack($t-a: left);//  text-align
   }
 }
 
@@ -436,7 +436,7 @@
   flex-direction: column;
   margin-bottom: 0;//*
   padding-left: 0;//*
-  list-style: none;//* Estas reglas eliminan los estilos predeterminados que asigna Bootstrap a una 'ul'.
+  list-style: none;//* Estas reglas eliminan los estilos predeterminados que asigna Bootstrap a una 'ul'
 
 //  Device Small
   @include mx.responsive('sm') {

@@ -142,7 +142,7 @@
    @include mx.responsive('lg') {
     @include mx.font-stack(
       $t-a: left,//  text-align
-      $f-w: 'medium',//  text-align
+      $f-w: 'medium',//  font-weight
     );
   }
 
@@ -180,7 +180,7 @@
 .title-section__logos {
 //  Device Medium
   @include mx.responsive('md') {
-//  Trabaja con Flexbox desde Bootstrap con la 'd-md-flex'.
+//  Trabaja con Flexbox desde Bootstrap con la '.d-md-flex'.
     align-items: center;
     justify-content: center;
   }
@@ -237,5 +237,3 @@
     }
   }
 }
-
-

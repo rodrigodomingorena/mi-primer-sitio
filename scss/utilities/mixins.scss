@@ -402,7 +402,7 @@
         }
       } @else {//  5*
         &--#{$selector} {
-          background: radial-gradient(if( math.abs($selector) == 2, closest-side at 67% 50%, closest-side at 33% 50%), #{$gradient} 0%, #{$bg} 100%);//  6*
+          background: radial-gradient(if(math.abs($selector) == 2, closest-side at 67% 50%, closest-side at 33% 50%), #{$gradient} 0%, #{$bg} 100%);//  6*
         }
       }
     }
@@ -515,7 +515,7 @@
 
 //  Código resultante (solo se muestra un '$breakpoint' del bucle):
 
-//  @media (min-width: sm) {
+//  @media (min-width: 576px) {
 //    .main-background {
 //      background: url('../media/menu/sm/hero-image.png') no-repeat center top,
 //                  radial-gradient(closest-side at 50% 50%, #fff 0%, rgba(247, 231, 148, 1) 100%);
@@ -606,7 +606,7 @@
 
 //  Código resultante (solo se muestra un '$breakpoint' y 'plato' de los bucles):
 
-//  @media (min-width: sm) {
+//  @media (min-width: 576px) {
 //    .info-nutricional__principal {
 //      min-width: 0;
 //      max-width: none;
@@ -614,7 +614,7 @@
 //    }
 
 //    .info-nutricional__principal--plato-1 {
-//      background-image: url('../media/plato-1/sm/info-nutricional.webp');
+//      background-image: url('../media/plato-1/sm/info-nutricional.png');
 //    }
 //  }
 

@@ -164,19 +164,19 @@
 @include mx.responsive('sm') {
   %size-sm {
     @include mx.size(
-      $hmin: 0,
-      $hmax: none,
+      $hmin: 0,//  min-height
+      $hmax: none,//  max-height
     );
   }
 
   %height-5-8 {
-    @include mx.size($h: 41.8rem);
+    @include mx.size($h: 41.8rem);//  heigth
   }
 }
 
 @include mx.responsive('md') {
   %size-md {
-    @include mx.size($h: auto);
+    @include mx.size($h: auto);//  height
   }
 }
 
