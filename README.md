@@ -195,7 +195,7 @@ Es un sitio formado por un total de 12 secciones, en las cuales se destacan el [
      Ahora bien, a pesar de que es soportado por casi todas las últimas versiones de los navegadores web ([Can I use][can-i-use-webp]), es necesario tener en cuenta que no todos los usuarios podrían llegar a tener estas últimas versiones en sus dispositivos. Por lo tanto, lo correcto es usar un método que pueda cubrir a todos los usuarios, es decir, que entregue a la totalidad de ellos imágenes en el formato que sus navegadores puedan soportar.
      
      ### Elementos `<picture>` y `<source>`
-     El elemento `<picture>` me perimitió incluir imágenes definiendo más de una fuente. Si el navegador del usuario que [visitie el sitio][index-page] admite 'webp', descargará la versión 'webp' del archivo de imagen en lugar del 'png' por defecto, lo que hará que la página se descargue más rápido.
+     El elemento `<picture>` me permitió incluir imágenes definiendo más de una fuente. Si el navegador del usuario que [visitie el sitio][index-page] admite 'webp', descargará la versión 'webp' del archivo de imagen en lugar del 'png' por defecto, lo que hará que la página se descargue más rápido.
      
      > Fragmento perteneciente al Index
    ```html
@@ -354,7 +354,7 @@ Es un sitio formado por un total de 12 secciones, en las cuales se destacan el [
     
     Para suerte mía, en la parte final de mi hoja de ruta de estudios se encontraba una herramienta que, luego de haber finalizado todo el trabajo, puedo concluir que fue la más divertida, dinámica y la que más disfruté de aprender: [Sass][sass-lang].
     
-    Al principio tuve cierta predisposición negativa ya que consideraba que reescribir todo el código CSS que había desarrollado en otro nuevo lenguaje con sus variaciones, era una tarea interminable y súmamente difícil para alguien que recién había comenzado a dar sus primeros pasos con CSS.
+    Al principio tuve cierta predisposición negativa ya que consideraba que reescribir todo el código CSS que había desarrollado en otro nuevo lenguaje con sus variaciones, era una tarea interminable y sumamente difícil para alguien que recién había comenzado a dar sus primeros pasos con CSS.
     Por suerte, ni bien me adentré en Sass descubrí que la extensión de la hoja de estilos CSS era lo mejor que me podría haber pasado. Esto se debe a que gracias a ella tuve la posibilidad de aplicar y practicar muchísimas herramientas disponibles en este lenguaje. De haber tenido un proyecto más pequeño y, por ende, una hoja de estilos más pequeña, no hubiese podido llevar a la práctica gran parte de estas herramientas.
     
     En esta parte es bueno aclarar que uno de los grandes beneficios que me dio al aplicarlo es, en gran medida, el poder tener un código más limpio y sencillo de mantener y editar, creando una estructura mucho más ordenada y segmentada. Al revisar el repositorio y [visualizar sus archivos .scss][sass-dir] es probable que puedas tener un acercamiento más ameno a los estilos del sitio, sumado a que me propuse realizar la mayor cantidad de comentarios de ayuda y explicaciones posibles para alcanzar este objetivo.
